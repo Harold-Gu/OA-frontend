@@ -25,6 +25,9 @@ onMounted(async () => {
 
         // Based on prepared dom, initialize echarts instance
         var myChart = echarts.init(document.getElementById('department-staff-count'));
+        
+        let isMobile = window.innerWidth < 768;
+
         // Draw chart
         myChart.setOption({
             tooltip: {
@@ -39,7 +42,7 @@ onMounted(async () => {
             grid: {
                 left: '3%',
                 right: '3%',
-                bottom: '10%',
+                bottom: isMobile ? '25%' : '10%',
                 top: '15%',
                 containLabel: true
             },
@@ -49,8 +52,9 @@ onMounted(async () => {
                 axisLine: { lineStyle: { color: '#e2e8f0' } },
                 axisLabel: {
                     interval: 0,
-                    width: 90,
-                    overflow: 'break',
+                    rotate: isMobile ? 45 : 0,
+                    width: isMobile ? null : 90,
+                    overflow: isMobile ? 'none' : 'break',
                     color: '#64748b',
                     fontSize: 12
                 },
@@ -87,7 +91,25 @@ onMounted(async () => {
             ]
         });
 
-        window.addEventListener('resize', () => myChart.resize());
+        window.addEventListener('resize', () => {
+            let currentIsMobile = window.innerWidth < 768;
+            if (currentIsMobile !== isMobile) {
+                isMobile = currentIsMobile;
+                myChart.setOption({
+                    grid: {
+                        bottom: isMobile ? '25%' : '10%'
+                    },
+                    xAxis: {
+                        axisLabel: {
+                            rotate: isMobile ? 45 : 0,
+                            width: isMobile ? null : 90,
+                            overflow: isMobile ? 'none' : 'break'
+                        }
+                    }
+                });
+            }
+            myChart.resize();
+        });
     } catch (detail) {
         ElMessage.error(detail)
     }
