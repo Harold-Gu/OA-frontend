@@ -11,7 +11,7 @@ import App from './App.vue'
 import router from './router'
 
 
-axios.defaults.baseURL = import.meta.env.VITE_BASE_API || 'https://oa-backend-j4mi.onrender.com'
+axios.defaults.baseURL = import.meta.env.VITE_BASE_API || 'https://oa-backend-j4mi.onrender.com/api'
 
 const app = createApp(App)
 
