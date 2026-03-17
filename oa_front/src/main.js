@@ -3,19 +3,24 @@ import { createPinia } from 'pinia'
 import ElementPlus from 'element-plus'
 import 'element-plus/dist/index.css'
 import * as ElementPlusIconsVue from '@element-plus/icons-vue'
-import zhCn from 'element-plus/es/locale/lang/zh-cn'
+
+import en from 'element-plus/es/locale/lang/en'
+import axios from 'axios' 
 
 import App from './App.vue'
 import router from './router'
+
+
+axios.defaults.baseURL = import.meta.env.VITE_BASE_API || 'https://oa-backend-hi64.onrender.com'
 
 const app = createApp(App)
 
 app.use(createPinia())
 app.use(router)
-app.use(ElementPlus, {
-  locale: zhCn,
-})
 
+app.use(ElementPlus, {
+  locale: en,
+})
 
 for (const [key, component] of Object.entries(ElementPlusIconsVue)) {
     app.component(key, component)
