@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd oa_front && npm run build",
+  "outputDirectory": "oa_front/dist",
+  "installCommand": "cd oa_front && npm install",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
