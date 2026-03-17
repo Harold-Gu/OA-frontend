@@ -4,7 +4,7 @@ import { useAuthStore } from "@/stores/auth";
 class Http{
     constructor(){
         this.instance = axios.create({
-            baseURL: import.meta.env.VITE_BASE_API || 'https://oa-backend-j4mi.onrender.com/api',
+            baseURL: import.meta.env.VITE_BASE_API || 'https://oa-backend-j4mi.onrender.com',
             timeout: 6000
         });
 
