@@ -72,6 +72,13 @@ const onSubmit = async () => {
                         </button>
                     </div>
 
+                    <div class="system-notice tech-notice server-status-notice">
+                        <div class="notice-header status-header">
+                            <i class="iconfont icon-fa-clock-o"></i> Backend Server Status
+                        </div>
+                        <p>Due to the use of a free hosting service for the backend, if you encounter no response or an error, please refresh the page and wait approximately one minute for the server to activate.</p>
+                    </div>
+
                     <div class="system-notice tech-notice">
                         <div class="notice-header">
                             <i class="iconfont icon-fa-shield"></i> Security Notice
@@ -205,6 +212,12 @@ const onSubmit = async () => {
     margin-top: 40px !important;
 }
 
+.server-status-notice {
+    border-color: rgba(129, 140, 248, 0.3);
+    background: rgba(30, 41, 59, 0.5);
+    margin-bottom: -20px;
+}
+
 .notice-header {
     color: #38bdf8;
     font-weight: 600;
@@ -213,6 +226,10 @@ const onSubmit = async () => {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.status-header {
+    color: #818cf8;
 }
 
 .tech-notice p {
